@@ -1,0 +1,47 @@
+<h4 class="text-light">Ephemeral instances</h4>
+<p>Instance data is lost when the instance is deleted.</p>
+<p>
+  <i class="fa fa-hdd-o fa-2x pull-left"></i>
+  <strong>Boot source</strong><br>
+  Use boot from image or boot from snapshot.
+</p>
+<p>
+  <i class="fa fa-bookmark fa-2x pull-left"></i>
+  <strong>Prerequisites</strong><br>
+  Have following components created before launching the instance:
+  <ul>
+    <li>Image or snapshot</li>
+    <li>Security group</li>
+    <li>Key pair &ndash; to log into the instance</li>
+    <li>Network &ndash; if you want to connect using an External network,
+      you need to allocate and assign a Floating IP</li>
+  </ul>
+</p>
+<h4 class="text-light">Persistent instances</h4>
+<p>
+  Instance data is saved after the instance is deleted.
+  New instances can use an existing volume.
+  You can also restore a deleted instance from a volume.
+</p>
+<p>
+  <i class="fa fa-hdd-o fa-2x pull-left"></i>
+  <strong>Boot source</strong><br>
+  Use volume, volume snapshot (creates a new volume)
+  or image (creates new volume).
+</p>
+<p>
+  <i class="fa fa-bookmark fa-2x pull-left"></i>
+  <strong>Prerequisites</strong><br>
+  Have following components created before launching the instance:
+  <ul>
+    <li>Volume (if using boot from volume option)<br>
+      If you choose boot from image or boot from image snapshot
+      then you don't need an existing volume. A new volume is created during the
+      launch instance process.
+    </li>
+    <li>Security group</li>
+    <li>Key pair &ndash; to log into the instance</li>
+    <li>Network &ndash; if you want to connect using an External network,
+      you need to allocate and assign a Floating IP</li>
+  </ul>
+</p>

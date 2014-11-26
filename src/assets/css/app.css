@@ -1,0 +1,59 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.text-light {
+    font-weight: 300;
+}
+
+.modal-lg {
+    width: 95%;
+}
+
+.modal-footer .btn {
+    min-width: 100px;
+}
+
+.source-table td {
+    vertical-align: middle !important;
+}
+
+.source-table .radio {
+    margin: 0;
+}
+
+.modal-body .help {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: 10;
+}
+
+.modal-body .help.shrunk {
+    width: 0;
+}
+
+.modal-body .help .help-button {
+    position: absolute;
+    top: 10px;
+    left: -25px;
+    z-index: 11;
+}
+
+.modal-body .help .help-button button {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-right: 0;
+    padding-left: 0;
+    width: 40px;
+}
+
+.modal-body .help .help-content {
+    height: 100%;
+    overflow-y: auto;
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+    margin-left: -1px;
+}

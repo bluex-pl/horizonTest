@@ -1,0 +1,46 @@
+<div ng-controller="WizardInstanceCtrl">
+  <div class="modal-header" ng-if="title">
+    <h3 class="modal-title">{{ title }} <small><i class="fa fa-angle-double-right"></i> {{ currentStep().label }}</small></h3>
+  </div>
+  <div class="modal-body content">
+    <div class="row">
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked">
+        <li ng-repeat="step in steps" ng-class="{active: step===currentStep()}">
+          <a ng-click="goToStep(step.name)">{{ step.label }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <div ng-repeat="step in steps" ng-include="step.templateUrl" ng-show="step===currentStep()"></div>
+    </div>
+    </div>
+    <div class="help row col-md-5 col-sm-11" ng-class="{'shrunk':!helpVisible}" ng-show="currentStep().helpTemplateUrl">
+      <div class="help-button">
+        <button class="btn btn-default" ng-click="helpVisible=!helpVisible">
+          <i class="fa fa-question-circle fa-lg fa-fw"
+             ng-class="{'fa-question-circle':!helpVisible, 'fa-times-circle':helpVisible}"></i>
+        </button>
+      </div>
+      <div class="col-md-12 help-content" ng-if="helpVisible">
+        <div ng-repeat="step in steps" ng-include="step.helpTemplateUrl" ng-show="step===currentStep()"></div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-sm btn-default pull-left" ng-click="cancel()">
+      <i class="fa fa-close fa-fw"></i> Cancel
+    </button>
+    <div class="btn-group">
+      <button class="btn btn-sm btn-default" ng-click="prevStep()" ng-disabled="isFirstStep">
+        <i class="fa fa-chevron-left fa-fw"></i> Back
+      </button>
+      <button class="btn btn-sm btn-primary" ng-click="nextStep()" ng-disabled="isLastStep">
+        Next <i class="fa fa-chevron-right fa-fw"></i>
+      </button>
+    </div>
+    <button class="btn btn-sm btn-success" ng-click="close()">
+      <i class="fa fa-check fa-fw"></i> {{ finish || 'Finish' }}
+    </button>
+  </div>
+</div>
