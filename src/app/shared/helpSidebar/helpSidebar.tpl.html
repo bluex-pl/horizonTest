@@ -1,0 +1,10 @@
+<div class="row col-md-5 col-sm-11" ng-class="{'shrunk':!helpVisible}">
+  <div class="help-button">
+    <button class="btn btn-default" ng-click="helpVisible=!helpVisible">
+      <i class="fa fa-question-circle fa-lg fa-fw"
+         ng-class="{'fa-question-circle':!helpVisible, 'fa-times-circle':helpVisible}"></i>
+    </button>
+  </div>
+  <div class="col-md-12 help-content" ng-if="helpVisible" ng-transclude>
+  </div>
+</div>

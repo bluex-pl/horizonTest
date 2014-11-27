@@ -1,7 +1,11 @@
-<div hz-wizard
-     title="Launch Instance"
-     finish="Launch"
-     steps="steps"
-     close="close()"
-     cancel="cancel()">
+<div hz-wizard title="Launch Instance" finish="Launch" close="close()" cancel="cancel()">
+  <div hz-wizard-step label="Boot Source Type" name="source-type">
+    <div ng-include="templatePath + 'type.tpl.html'"></div>
+  </div>
+  <div hz-wizard-step label="Select Source" name="source">
+    <div ng-include="templatePath + 'source.tpl.html'"></div>
+  </div>
+  <div hz-wizard-step label="Network" name="network">
+    <div ng-include="templatePath + 'net.tpl.html'"></div>
+  </div>
 </div>

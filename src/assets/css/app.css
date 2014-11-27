@@ -22,7 +22,13 @@ body {
     margin: 0;
 }
 
-.modal-body .help {
+[hz-wizard-step] {
+    margin: -15px;
+    padding: 15px;
+    position: relative;
+}
+
+[hz-help-sidebar] {
     position: absolute;
     top: 0;
     right: 0;
@@ -30,18 +36,18 @@ body {
     z-index: 10;
 }
 
-.modal-body .help.shrunk {
+[hz-help-sidebar].shrunk {
     width: 0;
 }
 
-.modal-body .help .help-button {
+[hz-help-sidebar] .help-button {
     position: absolute;
     top: 10px;
     left: -25px;
     z-index: 11;
 }
 
-.modal-body .help .help-button button {
+[hz-help-sidebar] .help-button button {
     border-right: 0;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -50,10 +56,12 @@ body {
     width: 40px;
 }
 
-.modal-body .help .help-content {
+[hz-help-sidebar] .help-content {
     height: 100%;
     overflow-y: auto;
     background-color: #fff;
     border-left: 1px solid #ccc;
     margin-left: -1px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }

@@ -1,30 +1,18 @@
-<div ng-controller="WizardInstanceCtrl">
+<div>
   <div class="modal-header" ng-if="title">
     <h3 class="modal-title">{{ title }} <small><i class="fa fa-angle-double-right"></i> {{ currentStep().label }}</small></h3>
   </div>
-  <div class="modal-body content">
+  <div class="modal-body">
     <div class="row">
     <div class="col-md-3">
       <ul class="nav nav-pills nav-stacked">
-        <li ng-repeat="step in steps" ng-class="{active: step===currentStep()}">
-          <a ng-click="goToStep(step.name)">{{ step.label }}</a>
+        <li ng-repeat="step in steps" ng-class="{active: step.currentStep}">
+          <a ng-click="goToStepID(step.ID)">{{ step.label }}</a>
         </li>
       </ul>
     </div>
-    <div class="col-md-9">
-      <div ng-repeat="step in steps" ng-include="step.templateUrl" ng-show="step===currentStep()"></div>
+    <div class="col-md-9" ng-transclude>
     </div>
-    </div>
-    <div class="help row col-md-5 col-sm-11" ng-class="{'shrunk':!helpVisible}" ng-show="currentStep().helpTemplateUrl">
-      <div class="help-button">
-        <button class="btn btn-default" ng-click="helpVisible=!helpVisible">
-          <i class="fa fa-question-circle fa-lg fa-fw"
-             ng-class="{'fa-question-circle':!helpVisible, 'fa-times-circle':helpVisible}"></i>
-        </button>
-      </div>
-      <div class="col-md-12 help-content" ng-if="helpVisible">
-        <div ng-repeat="step in steps" ng-include="step.helpTemplateUrl" ng-show="step===currentStep()"></div>
-      </div>
     </div>
   </div>
   <div class="modal-footer">
