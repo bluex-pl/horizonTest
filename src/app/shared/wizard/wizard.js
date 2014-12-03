@@ -1,47 +1,54 @@
 (function () {
   'use strict';
 
-  var dependencies = ['ui.bootstrap', 'ui.router'];
+  var dependencies = ['ui.bootstrap'];
   var app = angular.module('wizard', dependencies);
+
+  app.constant('wizardModalState', {
+    state: {
+      size: 'lg',
+      backdrop: 'static',
+      windowClass: 'wizard'
+    }
+  });
 
   app.directive('hzWizard', function () {
     return {
       transclude: true,
       replace: true,
       scope: {
-        title: '@?',
-        finish: '@?',
-        close: '&?',
-        cancel: '&?'
+        title: '@?',  // optional string - Wizard title
+        finish: '@?', // optional string - Text on finish button
+        close: '&?',  // optional expression - executed when finish button pressed
+        cancel: '&?'  // optional expression - executed when cancel button pressed
+        // TODO: controler injects, validation
       },
       controller: 'WizardCtrl',
       templateUrl: 'app/shared/wizard/wizard.tpl.html'
     };
   });
 
-  app.controller('WizardCtrl', function ($scope) {
+  app.controller('WizardCtrl', ['$scope', function ($scope) {
     var currentStep = 0;
-    var stepMap = {};
 
     $scope.steps = [];
     $scope.isFirstStep = true;
     $scope.isLastStep = false;
-    $scope.helpVisible = false;
 
-    this.registerStep = function (step) {
+    this.registerStep = function (stepScope) {
+      var transcludedScope = stepScope.$$nextSibling;
       if($scope.steps.length === 0) {
-        step.currentStep = true;
+        stepScope.currentStep = true;
       }
-      step.ID = $scope.steps.length;
-      step.goToStep = $scope.goToStep;
-      stepMap[step.name] = step.ID;
-      $scope.steps.push(step);
+      stepScope.ID = $scope.steps.length;
+      transcludedScope.goToStep = $scope.goToStep;
+      $scope.steps.push(stepScope);
     };
 
-    $scope.goToStepID = function (index) {
+    $scope.goToStep = function (ID) {
       $scope.steps[currentStep].currentStep = false;
-      $scope.steps[index].currentStep = true;
-      currentStep = index;
+      $scope.steps[ID].currentStep = true;
+      currentStep = ID;
       $scope.isFirstStep = currentStep === 0;
       $scope.isLastStep = currentStep === $scope.steps.length - 1;
     };
@@ -50,21 +57,15 @@
       return $scope.steps[currentStep];
     };
 
-    $scope.goToStep = function (stepName) {
-      goToStepID(stepMap[stepName]);
-    };
-
     $scope.nextStep = function () {
-      goToStepID(Math.min(currentStep + 1, $scope.steps.length - 1));
+      $scope.goToStep(Math.min(currentStep + 1, $scope.steps.length - 1));
     };
 
     $scope.prevStep = function () {
-      goToStepID(Math.max(currentStep - 1, 0));
+      $scope.goToStep(Math.max(currentStep - 1, 0));
     };
 
-    $scope.toggleHelp = function () {
-      $scope.helpVisible = !$scope.helpVisible;
-    };
-  });
+    console.log('wiz', $scope);
 
+  }]);
 }());

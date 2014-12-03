@@ -9,23 +9,24 @@
       transclude: true,
       replace: true,
       scope: {
-        name: '@',
-        label: '@',
-        valid: '&?'
+        label: '@'
       },
       controller: 'WizardStepCtrl',
       templateUrl: 'app/shared/wizard/wizardStep.tpl.html',
       link: function (scope, element, attrs, wizardCtrl) {
+        console.log('link', scope.label, scope.$id, scope.$parent.$id);
         wizardCtrl.registerStep(scope);
       }
     };
   });
 
-  app.controller('WizardStepCtrl', function ($scope) {
+  app.controller('WizardStepCtrl', ['$scope', function ($scope) {
+    // Initialized by WizardCtrl.registerStep
+    // Available to read by children's controllers
     $scope.ID = undefined;
-    $scope.valid = $scope.valid || true;
     $scope.currentStep = false;
-    $scope.goToStep = undefined;
-  });
+    //$scope.valid = true;
+    console.log('ctrl', $scope.label, $scope.$id, $scope.$parent.$id);
+  }]);
 
 }());

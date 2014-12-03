@@ -1,24 +1,28 @@
-<div>
+<div ng-form="wizardForm">
   <div class="modal-header" ng-if="title">
-    <h3 class="modal-title">{{ title }} <small><i class="fa fa-angle-double-right"></i> {{ currentStep().label }}</small></h3>
+    <h3 class="modal-title">{{ title }}
+      <small><i class="fa fa-angle-double-right"></i> {{ currentStep().label }}</small>
+    </h3>
   </div>
   <div class="modal-body">
     <div class="row">
-    <div class="col-md-3">
-      <ul class="nav nav-pills nav-stacked">
-        <li ng-repeat="step in steps" ng-class="{active: step.currentStep}">
-          <a ng-click="goToStepID(step.ID)">{{ step.label }}</a>
-        </li>
-      </ul>
-    </div>
-    <div class="col-md-9" ng-transclude>
-    </div>
+      <div class="col-md-3 sidebar">
+        <ul class="nav nav-pills nav-stacked nav-wizard">
+          <li ng-repeat="step in steps" ng-class="{active: step.currentStep}">
+            <a ng-click="goToStep(step.ID)">{{ step.label }}
+            <span class="pull-right" ng-class="{success: step.stepForm.$valid, warning: step.stepForm.$invalid}">
+              <i class="fa fa-fw fa-lg"
+                 ng-class="{'fa-check-circle': step.stepForm.$valid, 'fa-warning': step.stepForm.$invalid}"></i>
+            </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-9 content" ng-transclude>
+      </div>
     </div>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-sm btn-default pull-left" ng-click="cancel()">
-      <i class="fa fa-close fa-fw"></i> Cancel
-    </button>
     <div class="btn-group">
       <button class="btn btn-sm btn-default" ng-click="prevStep()" ng-disabled="isFirstStep">
         <i class="fa fa-chevron-left fa-fw"></i> Back
@@ -27,8 +31,11 @@
         Next <i class="fa fa-chevron-right fa-fw"></i>
       </button>
     </div>
-    <button class="btn btn-sm btn-success" ng-click="close()">
+    <button class="btn btn-sm btn-success" ng-click="close()" ng-disabled="wizardForm.$invalid">
       <i class="fa fa-check fa-fw"></i> {{ finish || 'Finish' }}
+    </button>
+    <button class="btn btn-sm btn-default pull-left" ng-click="cancel()">
+      <i class="fa fa-close fa-fw"></i> Cancel
     </button>
   </div>
 </div>

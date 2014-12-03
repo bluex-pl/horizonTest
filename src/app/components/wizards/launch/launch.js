@@ -4,18 +4,19 @@
   var dependencies = ['ui.bootstrap', 'wizard', 'helpSidebar'];
   var app = angular.module('horizon.wizards.launch', dependencies);
 
-  app.constant('launchInstanceModalState', {
+  app.constant('launchWizardModalState', {
     name: 'launch-instance',
     state: {
       url: '/launch-instance',
-      size: 'lg',
-      backdrop: 'static',
-      controller: 'LaunchWizardInstanceCtrl',
-      templateUrl: 'app/components/wizards/launch/launch.tpl.html'
+      controller: 'LaunchWizardCtrl',
+      templateUrl: 'app/components/wizards/launch/launch.tpl.html',
+      windowClass: 'wizard',
+      backdrop: 'static'
     }
   });
 
-  app.controller('LaunchWizardInstanceCtrl', function ($scope, $modalInstance) {
+  app.controller('LaunchWizardCtrl', ['$scope', '$modalInstance',
+    function ($scope, $modalInstance) {
     $scope.templatePath = 'app/components/wizards/launch/steps/';
     $scope.data = {};
 
@@ -28,5 +29,5 @@
       console.log('Cancel');
       $modalInstance.dismiss('cancel');
     };
-  });
+  }]);
 }());

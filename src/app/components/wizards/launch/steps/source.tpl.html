@@ -1,9 +1,100 @@
-<div class="form-group">
-  <div class="input-group input-group-sm">
-      <input type="text" class="form-control" placeholder="Search">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Browse Filters <i class="fa fa-caret-down fa-fw"></i></button>
-      </span>
+<div>
+  <div class="row">
+    <div class="form-group form-group-sm col-md-3 pf">
+      <label>Instance Name</label>
+      <input type="text" class="form-control" placeholder="Enter name">
     </div>
+    <div class="form-group form-group-sm col-md-4 pf">
+      <label>Description</label>
+      <input type="text" class="form-control" placeholder="Enter description">
+    </div>
+    <div class="form-group form-group-sm col-md-1 pf">
+      <label>Count</label>
+      <input type="number" class="form-control" value="1">
+    </div>
+    <div class="form-group form-group-sm col-md-4 pf">
+      <label>Availability Zone</label>
+      <input type="text" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group form-group-sm col-md-3 pf">
+      <select class="form-control">
+        <option>Image</option>
+        <option>Instance snapshot</option>
+        <option>Volume</option>
+        <option>Volume snapshot</option>
+      </select>
+    </div>
+    <div class="form-group form-group-sm col-md-9 pf">
+      <div class="input-group input-group-sm">
+        <input type="text" class="form-control" placeholder="Search">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Browse Filters <i class="fa fa-caret-down fa-fw"></i></button>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="panel panel-default">
+  <table style="width:100%">
+    <tr>
+      <th rowspan="3" class="">
+        <i class="fa fa-chevron-right"></i>
+      </th>
+      <td rowspan="3" class="icon">
+        <img src="http://placehold.it/64x64" />
+      </td>
+      <td colspan="8">Image name</td>
+    </tr>
+    <tr>
+      <td>Published by</td>
+      <td>Company name</td>
+      <td>Version</td>
+      <td>7.0.0</td>
+      <td>Base OS</td>
+      <td>Linux/Unix, CentOS 6</td>
+      <td>Public</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <td>Updated</td>
+      <td>24 Feb 2014</td>
+      <td>Size</td>
+      <td>64GB</td>
+      <td>Type</td>
+      <td>Ami</td>
+      <td>Status</td>
+      <td>Active</td>
+    </tr>
+  </table>
+</div>
+<div class="panel panel-default">
+  <div class="sel"></div>
+  <div class="icon"></div>
+  <div>
+    <div class="row title">
+      <div class="col-md-12">
+        Image name
+      </div>
+    </div>
+    <div class="row spec">
+      <div class="col-md-4">
+        <p><strong>Published by</strong> Company name</p>
+        <p><strong>Updated</strong> 24 Feb 2014</p>
+      </div>
+      <div class="col-md-2">
+        <p><strong>Version</strong> 7.0.0</p>
+        <p><strong>Size</strong> 64GB</p>
+      </div>
+      <div class="col-md-4">
+        <p><strong>Base OS</strong> Linux/Unix, CentOS 6</p>
+        <p><strong>Type</strong> Ami</p>
+      </div>
+      <div class="col-md-2">
+        <p><strong>Public</strong> True</p>
+        <p><strong>Status</strong> Active</p>
+      </div>
+    </div>
+  </div>
 </div>

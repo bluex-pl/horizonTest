@@ -6,27 +6,53 @@ body {
     font-weight: 300;
 }
 
-.modal-lg {
-    width: 95%;
+/* Wizard Modal */
+
+.modal.wizard .modal-dialog {
+    width: 95vw;
+    max-width: 1280px;
 }
 
-.modal-footer .btn {
+.modal.wizard .modal-footer .btn {
     min-width: 100px;
 }
 
-.source-table td {
-    vertical-align: middle !important;
+.modal.wizard .modal-content .content {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-.source-table .radio {
-    margin: 0;
+/* Wizard tags */
+
+[hz-wizard] .nav-wizard > li.active > a > span,
+[hz-wizard] .nav-wizard > li.active > a > span.success,
+[hz-wizard] .nav-wizard > li.active > a > span.warning {
+    color: inherit;
+}
+
+[hz-wizard] .nav-wizard > li > a > span.success {
+    /* TODO: use @brand-success */
+    color: #5cb85c;
+}
+
+[hz-wizard] .nav-wizard > li > a > span.warning {
+    /* TODO: use @brand-warning */
+    color: #f0ad4e;
 }
 
 [hz-wizard-step] {
-    margin: -15px;
-    padding: 15px;
-    position: relative;
+    x-margin: -15px;
+    x-padding: 15px;
+    x-position: relative;
 }
+[hz-wizard-step] {
+    height: 70vh;
+    min-height: 512px;
+    max-height: 1024px;
+}
+
+/* Help Sidebar */
 
 [hz-help-sidebar] {
     position: absolute;
@@ -43,6 +69,7 @@ body {
 [hz-help-sidebar] .help-button {
     position: absolute;
     top: 10px;
+    bottom: 0;
     left: -25px;
     z-index: 11;
 }
@@ -59,9 +86,29 @@ body {
 [hz-help-sidebar] .help-content {
     height: 100%;
     overflow-y: auto;
+    /* TODO: use @body-bg */
     background-color: #fff;
+    /* TODO: use variable */
     border-left: 1px solid #ccc;
     margin-left: -1px;
     padding-top: 15px;
     padding-bottom: 15px;
+}
+
+/* Launch Wizard */
+
+[hz-wizard-step] .pf {
+    padding-left: 0;
+}
+
+[hz-wizard-step] .pf:first-child {
+    padding-left: 15px;
+}
+
+.source-table td {
+    vertical-align: middle !important;
+}
+
+.source-table .radio {
+    margin: 0;
 }

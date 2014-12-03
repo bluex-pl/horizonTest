@@ -1,1 +1,6 @@
-<a ui-sref="^.^.add_network.net_name">Add network +</a>
+<div ng-form="netStep">
+  <div class="form-group">
+    foo: <input name="input" ng-model="formData.foo" required>
+  </div>
+  <p>Valid: {{netStep.$valid}}</p>
+</div>

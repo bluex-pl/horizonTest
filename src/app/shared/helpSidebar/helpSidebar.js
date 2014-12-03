@@ -13,12 +13,12 @@
     };
   });
 
-  app.controller('HelpSidebarCtrl', function ($scope) {
+  app.controller('HelpSidebarCtrl', ['$scope', function ($scope) {
     $scope.helpVisible = false;
 
     $scope.toggleHelp = function () {
       $scope.helpVisible = !$scope.helpVisible;
     };
-  });
+  }]);
 
 }());

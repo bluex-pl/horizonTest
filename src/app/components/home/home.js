@@ -9,7 +9,8 @@
   ];
   var app = angular.module('horizon.home', dependencies);
 
-  app.config(function ($stateProvider, modalStateProvider, launchInstanceModalState) {
+  app.config(['$stateProvider', 'modalStateProvider', 'launchWizardModalState',
+    function ($stateProvider, modalStateProvider, launchWizardModalState) {
     $stateProvider.state('home', {
       url: '/home',
       views: {
@@ -22,13 +23,13 @@
         pageTitle: 'Home'
       }
     });
-    modalStateProvider.state('home.' + launchInstanceModalState.name,
-      launchInstanceModalState.state
+    modalStateProvider.state('home.' + launchWizardModalState.name,
+      launchWizardModalState.state
     );
-  });
+  }]);
 
-  app.controller('HomeCtrl', function ($scope) {
+  app.controller('HomeCtrl', ['$scope', function ($scope) {
 
-  });
+  }]);
 
 }());

@@ -9,7 +9,7 @@
   ];
   var app = angular.module('horizon.test', dependencies);
 
-  app.config(function ($stateProvider, modalStateProvider, launchInstanceModalState) {
+  app.config(function ($stateProvider, modalStateProvider, launchWizardModalState) {
     $stateProvider.state('test', {
       url: '/test',
       views: {
@@ -22,13 +22,13 @@
         pageTitle: 'Test'
       }
     });
-    modalStateProvider.state('test.' + launchInstanceModalState.name,
-      launchInstanceModalState.state
+    modalStateProvider.state('test.' + launchWizardModalState.name,
+      launchWizardModalState.state
     );
   });
 
-  app.controller('TestCtrl', function ($scope) {
+  app.controller('TestCtrl', ['$scope', function ($scope) {
 
-  });
+  }]);
 
 }());

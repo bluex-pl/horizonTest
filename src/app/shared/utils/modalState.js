@@ -4,7 +4,7 @@
   var dependencies = ['ui.router', 'ui.bootstrap'];
   var app = angular.module('modalState', dependencies);
 
-  app.provider('modalState', function ($stateProvider) {
+  app.provider('modalState', ['$stateProvider', function ($stateProvider) {
     var provider = this;
 
     this.$get = function () {
@@ -16,7 +16,7 @@
 
       $stateProvider.state(stateName, {
         url: options.url,
-        onEnter: function ($modal, $state) {
+        onEnter: ['$modal', '$state', function ($modal, $state) {
           modalInstance = $modal.open(options);
           modalInstance.result['finally'](function () {
             modalInstance = null;
@@ -24,15 +24,15 @@
               $state.go('^');
             }
           });
-        },
-        onExit: function () {
+        }],
+        onExit: [function () {
           if (modalInstance) {
             modalInstance.close();
           }
-        }
+        }]
       });
       return provider;
     };
-  });
+  }]);
 
 }());
