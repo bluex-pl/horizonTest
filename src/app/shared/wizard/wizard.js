@@ -65,7 +65,5 @@
       $scope.goToStep(Math.max(currentStep - 1, 0));
     };
 
-    console.log('wiz', $scope);
-
   }]);
 }());

@@ -14,7 +14,6 @@
       controller: 'WizardStepCtrl',
       templateUrl: 'app/shared/wizard/wizardStep.tpl.html',
       link: function (scope, element, attrs, wizardCtrl) {
-        console.log('link', scope.label, scope.$id, scope.$parent.$id);
         wizardCtrl.registerStep(scope);
       }
     };
@@ -25,8 +24,6 @@
     // Available to read by children's controllers
     $scope.ID = undefined;
     $scope.currentStep = false;
-    //$scope.valid = true;
-    console.log('ctrl', $scope.label, $scope.$id, $scope.$parent.$id);
   }]);
 
 }());
